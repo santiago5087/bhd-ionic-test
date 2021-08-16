@@ -13,4 +13,37 @@ ion-toolbar {
 
 .login-logo {
   text-align: center;
+  margin-top: 30px;
+}
+
+.login-input-icon {
+  padding-right: 15px;
+}
+
+.login-ion-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  ion-toggle {
+    --background: #CCCCCC99;
+    --background-checked: #49B742;
+    --handle-background: #FFFFFF;
+    --handle-background-checked: #FFFFFF;
+    padding: 12px;
+  }
+  ion-label {
+    line-height: 3;
+    font-size: small;
+  }
+}
+
+.login-ion-item {
+  margin: 20px 20px 0px;
+  border-radius: 7px;
+  border: 0.5px solid #CCCCCC99;
+}
+
+.login-button {
+  margin: 20px 20px 0px;
+  text-transform: uppercase;
 }

@@ -3,8 +3,15 @@
     <ion-menu contentId="main-content">
   
       <ion-header>
-        <ion-toolbar color="primary">
-          <ion-title>Menu</ion-title>
+        <ion-toolbar>
+          <!-- <ion-title>Menu</ion-title> -->
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=
+              500">
+            </ion-avatar>
+            <ion-label>Santiago</ion-label>
+          </ion-item>
         </ion-toolbar>
       </ion-header>
   
@@ -15,7 +22,8 @@
               [routerLink]="p.url" 
               routerDirection="root" 
               [class.active-item]="selectedPath.startsWith(p.url)">
-              <ion-label>
+              <ion-img [src]="p.icon"></ion-img>
+              <ion-label class="menu-label">
                 {{ p.title }}
               </ion-label>
             </ion-item>

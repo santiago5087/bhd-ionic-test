@@ -8,11 +8,49 @@
 
 <ion-content class="ion-padding" fullscreen="true">
 
-  <div class="login-logo">
-    <img src="../../../assets/images/bhd_logo.png" alt="" srcset="">
-  </div>
+  <form>
 
-  <ion-button expand="block" routerLink="/tabs/mis-productos">
-    INICIAR SESIÓN
-  </ion-button>
+    <div class="login-logo">
+      <img src="assets/images/bhd_logo.png" alt="" srcset="">
+    </div>
+  
+    <ion-item class="login-ion-item">
+      <ion-img 
+        position="floating" 
+        class="login-input-icon" 
+        src="assets/images/icon_user.svg">
+      </ion-img>
+      <ion-input 
+        type="text" 
+        name="user" 
+        placeholder="Documento de identidad">
+  
+      </ion-input>
+    </ion-item>
+  
+    <ion-item class="login-ion-item">
+      <ion-img 
+        position="floating" 
+        class="login-input-icon" 
+        src="assets/images/icon_password.svg">
+      </ion-img>
+      <ion-input 
+        type="password" 
+        name="password" 
+        placeholder="Contraseña">
+      </ion-input>
+    </ion-item>
+  
+    <div class="login-ion-toggle">
+      <ion-toggle slot="start"></ion-toggle>
+      <ion-label>Recuerda mi usuario</ion-label>
+    </div>
+  
+    <ion-button class="login-button" expand="block" routerLink="/tabs/mis-productos">
+      Iniciar Sesión
+    </ion-button>
+
+  </form>
+
+
 </ion-content>
