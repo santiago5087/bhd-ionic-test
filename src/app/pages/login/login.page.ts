@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterEvent } from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms/'
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,21 @@ import { Router, RouterEvent } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router) { }
+  loginForm: FormGroup;
+
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
+  }
+
+  createForm(): void {
+    let userId = localStorage.getItem('userId');
+    this.loginForm = this.formBuilder.group({
+      user: [userId ? userId : '', [Validators.required, Validators.minLength(8)]]
+    })
   }
 
 }
