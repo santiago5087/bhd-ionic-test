@@ -8,7 +8,7 @@
 
 <ion-content class="ion-padding" fullscreen="true">
 
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
 
     <div class="login-logo">
       <img src="assets/images/bhd_logo.png" alt="" srcset="">
@@ -21,8 +21,8 @@
         src="assets/images/icon_user.svg">
       </ion-img>
       <ion-input 
-        type="number" 
-        name="user" 
+        type="text"
+        formControlName="user" 
         placeholder="Documento de identidad">
   
       </ion-input>
@@ -36,17 +36,20 @@
       </ion-img>
       <ion-input 
         type="password" 
-        name="password" 
+        formControlName="password" 
         placeholder="Contraseña">
       </ion-input>
     </ion-item>
   
     <div class="login-ion-toggle">
-      <ion-toggle slot="start"></ion-toggle>
+      <ion-toggle slot="start" formControlName="remember"></ion-toggle>
       <ion-label>Recuerda mi usuario</ion-label>
     </div>
   
-    <ion-button class="login-button" expand="block" routerLink="/tabs/mis-productos">
+    <ion-button
+      type="submit"
+      class="login-button" 
+      expand="block">
       Iniciar Sesión
     </ion-button>
 

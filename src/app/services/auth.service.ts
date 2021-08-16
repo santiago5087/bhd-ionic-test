@@ -49,7 +49,8 @@ export class AuthService {
     return this.http.post(`${this.apiURL}/sign_in`, { userId, password })
       .pipe(map((res: AuthResponse) => {
         this.storeTokens(res.access_token, res.refresh_token);
-        this.getUserData();
+        /* Endpoint no funciona */
+        // this.getUserData();
         return { "success": true }
       }));
   }
@@ -70,6 +71,7 @@ export class AuthService {
   getUserData(): void {
     this.http.get<User>(`${this.apiURL}/na`)
       .subscribe(user => {
+        console.log("User data", user);
         this.storeUserData(user);
       });
   }
