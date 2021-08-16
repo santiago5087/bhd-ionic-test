@@ -1,0 +1,16 @@
+ion-content {
+  --background: url('../../../assets/images/bkg.png') no-repeat center center / cover;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.header-md::after {
+  background-image: none !important;
+}
+
+.login-logo {
+  text-align: center;
+}
