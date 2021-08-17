@@ -9,4 +9,45 @@
 
 <ion-content>
 
+  <h2>Cuentas ({{ accounts.length }})</h2>
+  
+  <!-- @TODO Pasar a un componente -->
+  <ion-card *ngFor="let account of accounts; let i = index">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon class="tab-icon" src="assets/images/icon_my_products_gray.svg">
+        </ion-icon>
+        <ion-label>{{ account.alias }} - {{ i+1 | leadingZeros: 3 }}</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h4>
+        RD$ <span>{{ account.availableAmount | currency:'':'' }}</span>
+      </h4>
+      <h6>Balance disponible</h6>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Tarjetas ({{ creditCards.length }})</h2>
+
+  <ion-card *ngFor="let cc of creditCards; let i = index">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon class="tab-icon" src="assets/images/icon_credit_card_gray.svg">
+        </ion-icon>
+        <ion-label>{{ cc.alias }} - {{ i+1 | leadingZeros: 3 }}</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h4>
+        RD$ <span>{{ cc.availableAmountRD | currency:'':'' }}</span>
+      </h4><h4>
+        US$ <span>{{ cc.availableAmountUS | currency:'':'' }}</span>
+      </h4>
+      <h6>Balance disponible</h6>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

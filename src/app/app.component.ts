@@ -1,18 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterEvent } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { User } from './models/user.model';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy, OnChanges {
 
-  pages = [
+  user: User;
+  subscription: Subscription;
+  
+  pages = [];
+
+  pagesAuth = [
     {
       title: 'Mis productos',
       url: '/tabs/mis-productos',
@@ -45,13 +53,27 @@ export class AppComponent {
     }
   ];
 
+  pagesNoAuth = [
+    {
+      title: 'Contacto',
+      url: '/contacto',
+      icon: 'assets/images/icon_contact.svg'
+    },
+    {
+      title: 'Sucursales',
+      url: '/sucursales',
+      icon: 'assets/images/icon_branches.svg'
+    }
+  ]
+
   selectedPath = '';
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.initializeApp();
     this.router.events.subscribe((event: RouterEvent) => {
@@ -59,6 +81,36 @@ export class AppComponent {
         this.selectedPath = event.url;
       }
     });
+
+    this.authService.loadUserCredentials();
+    this.subscription = this.authService.getUserObservable().subscribe(user => {
+        this.user = user;
+        console.log("USER", this.user)
+        this.user
+        ? this.pages = this.pagesAuth
+        : this.pages = this.pagesNoAuth;
+      });
+  }
+
+  ngOnInit() {
+    this.user
+    ? this.pages = this.pagesAuth
+    : this.pages = this.pagesNoAuth;
+  }
+
+  ngOnChanges() {
+    this.user
+    ? this.pages = this.pagesAuth
+    : this.pages = this.pagesNoAuth;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 
   initializeApp() {

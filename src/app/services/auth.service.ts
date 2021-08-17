@@ -6,6 +6,12 @@ import { map } from 'rxjs/operators'
 
 import { User } from '../models/user.model'
 
+let userInfo: User = {
+  name: "José",
+  lastName: "Pérez",
+  photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+}
+
 interface AuthResponse {
   access_token: string;
   refresh_token: string;
@@ -49,8 +55,7 @@ export class AuthService {
     return this.http.post(`${this.apiURL}/sign_in`, { userId, password })
       .pipe(map((res: AuthResponse) => {
         this.storeTokens(res.access_token, res.refresh_token);
-        /* Endpoint no funciona */
-        // this.getUserData();
+        this.getUserData();
         return { "success": true }
       }));
   }
@@ -69,11 +74,15 @@ export class AuthService {
   }
 
   getUserData(): void {
+    /* Endpoint no funciona */
+    /*
     this.http.get<User>(`${this.apiURL}/na`)
       .subscribe(user => {
         console.log("User data", user);
         this.storeUserData(user);
       });
+    */
+   this.storeUserData(userInfo);
   }
 
   loadUserCredentials(): void {

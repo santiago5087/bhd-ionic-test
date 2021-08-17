@@ -2,25 +2,25 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content">
   
-      <ion-header>
+      <ion-header >
         <ion-toolbar>
-          <!-- <ion-title>Menu</ion-title> -->
-          <ion-item>
+          <ion-item *ngIf="user">
             <ion-avatar slot="start">
-              <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=
-              500">
+              <img [src]="user.photo">
             </ion-avatar>
-            <ion-label>Santiago</ion-label>
+            <ion-label>{{ user.name }} {{ user.lastName }}</ion-label>
           </ion-item>
         </ion-toolbar>
       </ion-header>
   
       <ion-content>
         <ion-list id="my-list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+          <ion-menu-toggle 
+            auto-hide="false" 
+            *ngFor="let p of pages">
             <ion-item 
               [routerLink]="p.url" 
-              routerDirection="root" 
+              routerDirection="forward" 
               [class.active-item]="selectedPath.startsWith(p.url)">
               <ion-img [src]="p.icon"></ion-img>
               <ion-label class="menu-label">
@@ -29,7 +29,10 @@
             </ion-item>
           </ion-menu-toggle>
   
-          <ion-item tappable routerLink="/login" routerDirection="root">
+          <ion-item *ngIf="user" 
+            (click)="logout()"
+            tappable 
+            routerDirection="root">
             <ion-icon name="log-out" slot="start"></ion-icon>
             Logout
           </ion-item>
