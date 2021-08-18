@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Router } from '@angular/router'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms/'
+
+import { ToastController } from '@ionic/angular'
 
 import { AuthService } from '../../services/auth.service'
 
@@ -9,19 +11,27 @@ import { AuthService } from '../../services/auth.service'
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   loginForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastController: ToastController
   ) { 
     this.createForm();
   }
 
-  ngOnInit() {
+  async presentToast(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      position: 'top',
+      color: 'danger'
+    });
+    toast.present();
   }
 
   createForm(): void {
@@ -44,6 +54,7 @@ export class LoginPage implements OnInit {
         }
       }, err => {
         // Mostrar error con el componente de ionic
+        this.presentToast(err['error']['message']);
         console.log(err);
       });
   }

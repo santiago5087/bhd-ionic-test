@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { map } from 'rxjs/operators'
+import { environment } from 'src/environments/environment'
 
 import { Account } from '../models/account.model'
 import { CreditCard } from '../models/credit-card.model'
@@ -10,7 +11,7 @@ import { CreditCard } from '../models/credit-card.model'
 })
 export class ProductsService {
 
-  private apiURL = 'https://bhdleonfrontend-test.herokuapp.com/products';
+  private apiURL = environment.apiURL + '/products';
 
   constructor(
     private http: HttpClient

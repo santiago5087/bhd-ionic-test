@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Router } from '@angular/router'
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { User } from '../models/user.model'
+import { environment } from '../..//environments/environment'
 
 let userInfo: User = {
   name: "José",
@@ -26,11 +26,10 @@ export class AuthService {
   accessToken = '';
   refreshToken = '';
   isAuthenticated = false;
-  apiURL = 'https://bhdleonfrontend-test.herokuapp.com';
+  apiURL = environment.apiURL;
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) { }
   
   useTokens(accessToken: string, refreshToken: string): void {
@@ -89,7 +88,6 @@ export class AuthService {
     const userData: User = JSON.parse(localStorage.getItem('userData'));
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
-    console.log('loadUserCredentials', userData);
     if (userData && userData.name) {
       this.sendUserData(userData);
       if (accessToken && refreshToken) {

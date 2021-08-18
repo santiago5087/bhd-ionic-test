@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-sucursales',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SucursalesPage implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.loadUserCredentials();
   }
 
 }
