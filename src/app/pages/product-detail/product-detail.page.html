@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title class="tab-main-title" size="small">
+      Detalle de producto
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <app-product-card
+    *ngIf="product"
+    [product]="product"
+    [index]="product.alias.split(' ')[3]"
+    [routeLink]="null">
+  </app-product-card>
+
+</ion-content>

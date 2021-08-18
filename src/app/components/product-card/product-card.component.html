@@ -1,0 +1,29 @@
+<ion-card 
+  [routerLink]="routeLink" 
+  routerDirection="forward">
+
+  <ion-card-header>
+    <ion-card-title>
+      <ion-icon 
+        class="tab-icon" 
+        [src]="product.productType==='AC' 
+          ? 'assets/images/icon_my_products_gray.svg' 
+          : 'assets/images/icon_credit_card_gray.svg'">
+      </ion-icon>
+      <ion-label>{{ product.alias }} - {{ index | leadingZeros: 3 }}</ion-label>
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <h4>
+      RD$ <span>{{ product.productType==='AC' 
+        ? (product.availableAmount | currency:'':'')
+        : (product.availableAmountRD | currency:'':'') }}</span>
+    </h4>
+    <h4 *ngIf="product.productType==='TC'">
+      US$ <span>{{ product.availableAmountUS | currency:'':'' }}</span>
+    </h4>
+    <h6>Balance disponible</h6>
+  </ion-card-content>
+
+</ion-card>

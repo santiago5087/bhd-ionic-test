@@ -6,9 +6,8 @@ import { IonicModule } from '@ionic/angular'
 
 import { MisProductosPageRoutingModule } from './mis-productos-routing.module'
 import { PipesModule } from '../../../pipes/pipes.module'
-import { MisProductosService } from './mis-productos.service'
-
 import { MisProductosPage } from './mis-productos.page'
+import { ProductCardModule } from '../../../components/product-card/product-card.module'
 
 @NgModule({
   imports: [
@@ -16,11 +15,11 @@ import { MisProductosPage } from './mis-productos.page'
     FormsModule,
     IonicModule,
     MisProductosPageRoutingModule,
-    PipesModule
+    PipesModule,
+    ProductCardModule
   ],
-  declarations: [MisProductosPage],
-  providers: [
-    MisProductosService
+  declarations: [
+    MisProductosPage
   ]
 })
 export class MisProductosPageModule {}

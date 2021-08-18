@@ -7,47 +7,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   <h2>Cuentas ({{ accounts.length }})</h2>
   
-  <!-- @TODO Pasar a un componente -->
-  <ion-card *ngFor="let account of accounts; let i = index">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-icon class="tab-icon" src="assets/images/icon_my_products_gray.svg">
-        </ion-icon>
-        <ion-label>{{ account.alias }} - {{ i+1 | leadingZeros: 3 }}</ion-label>
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <h4>
-        RD$ <span>{{ account.availableAmount | currency:'':'' }}</span>
-      </h4>
-      <h6>Balance disponible</h6>
-    </ion-card-content>
-  </ion-card>
+  <app-product-card 
+    *ngFor="let account of accounts; let i = index"
+    [product]="account"
+    [index]="i+1"
+    [routeLink]="['product-detail/', account.productType, account.number]"
+    >
+  </app-product-card>
 
   <h2>Tarjetas ({{ creditCards.length }})</h2>
 
-  <ion-card *ngFor="let cc of creditCards; let i = index">
-    <ion-card-header>
-      <ion-card-title>
-        <ion-icon class="tab-icon" src="assets/images/icon_credit_card_gray.svg">
-        </ion-icon>
-        <ion-label>{{ cc.alias }} - {{ i+1 | leadingZeros: 3 }}</ion-label>
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <h4>
-        RD$ <span>{{ cc.availableAmountRD | currency:'':'' }}</span>
-      </h4><h4>
-        US$ <span>{{ cc.availableAmountUS | currency:'':'' }}</span>
-      </h4>
-      <h6>Balance disponible</h6>
-    </ion-card-content>
-  </ion-card>
+  <app-product-card 
+    *ngFor="let cc of creditCards; let i = index"
+    [index]="i+1"
+    [product]="cc"
+    [routeLink]="['product-detail/', cc.productType, cc.number]"
+    >
+  </app-product-card>
 
 </ion-content>
