@@ -20,8 +20,7 @@
             *ngFor="let p of pages">
             <ion-item 
               [routerLink]="p.url" 
-              routerDirection="forward" 
-              [class.active-item]="selectedPath.startsWith(p.url)">
+              routerDirection="forward">
               <ion-img [src]="p.icon"></ion-img>
               <ion-label class="menu-label">
                 {{ p.title }}

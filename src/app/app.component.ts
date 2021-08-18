@@ -3,7 +3,7 @@ import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
 import { Platform } from '@ionic/angular'
 import { SplashScreen } from '@ionic-native/splash-screen/ngx'
 import { StatusBar } from '@ionic-native/status-bar/ngx'
-import { Router, RouterEvent } from '@angular/router'
+import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 
 import { AuthService } from './services/auth.service'
@@ -77,11 +77,6 @@ export class AppComponent implements OnInit, OnDestroy, OnChanges {
     private authService: AuthService
   ) {
     this.initializeApp();
-    this.router.events.subscribe((event: RouterEvent) => {
-      if (event && event.url) {
-        this.selectedPath = event.url;
-      }
-    });
 
     this.authService.loadUserCredentials();
     this.subscription = this.authService.getUserObservable().subscribe(user => {
