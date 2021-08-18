@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular'
 import { MisProductosPageRoutingModule } from './mis-productos-routing.module'
 import { PipesModule } from '../../../pipes/pipes.module'
 import { MisProductosPage } from './mis-productos.page'
-import { ProductCardModule } from '../../../components/product-card/product-card.module'
+import { ComponentsModule } from '../../../components/components.module'
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { ProductCardModule } from '../../../components/product-card/product-card
     IonicModule,
     MisProductosPageRoutingModule,
     PipesModule,
-    ProductCardModule
+    ComponentsModule
   ],
   declarations: [
     MisProductosPage

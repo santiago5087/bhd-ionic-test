@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular'
 
 import { ProductDetailPageRoutingModule } from './product-detail-routing.module'
 import { ProductDetailPage } from './product-detail.page'
-import { ProductCardModule } from '../../components/product-card/product-card.module'
+import { ComponentsModule } from '../../components/components.module'
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { ProductCardModule } from '../../components/product-card/product-card.mo
     FormsModule,
     IonicModule,
     ProductDetailPageRoutingModule,
-    ProductCardModule
+    ComponentsModule
   ],
   declarations: [
     ProductDetailPage

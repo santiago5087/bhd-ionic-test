@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-
-import { ProductCardComponent } from './product-card.component'
 import { IonicModule } from '@ionic/angular'
 import { RouterModule } from '@angular/router'
-import { PipesModule } from 'src/app/pipes/pipes.module'
+
+import { PipesModule } from '../pipes/pipes.module'
+import { ProductCardComponent } from './product-card/product-card.component'
 
 @NgModule({
   declarations: [
-    ProductCardComponent
+    ProductCardComponent,
   ],
   imports: [
     CommonModule,
@@ -16,6 +16,8 @@ import { PipesModule } from 'src/app/pipes/pipes.module'
     RouterModule,
     PipesModule
   ],
-  exports: [ProductCardComponent]
+  exports: [
+    ProductCardComponent,
+  ]
 })
-export class ProductCardModule { }
+export class ComponentsModule { }

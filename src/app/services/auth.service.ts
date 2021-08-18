@@ -73,7 +73,10 @@ export class AuthService {
   }
 
   getUserData(): void {
-    /* Endpoint no funciona */
+    /* 
+    Endpoint "/na" no funciona, por lo que se usa un objeto (userInfo) que simula la info
+    retonarda por este
+    */
     /*
     this.http.get<User>(`${this.apiURL}/na`)
       .subscribe(user => {

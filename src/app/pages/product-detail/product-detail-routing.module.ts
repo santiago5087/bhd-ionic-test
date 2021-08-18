@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { Routes, RouterModule } from '@angular/router'
 
-import { ProductDetailPage } from './product-detail.page';
+import { ProductDetailPage } from './product-detail.page'
 
 const routes: Routes = [
   {

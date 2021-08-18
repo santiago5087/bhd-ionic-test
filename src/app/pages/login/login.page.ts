@@ -53,7 +53,6 @@ export class LoginPage {
           this.router.navigateByUrl('/tabs');
         }
       }, err => {
-        // Mostrar error con el componente de ionic
         this.presentToast(err['error']['message']);
         console.log(err);
       });

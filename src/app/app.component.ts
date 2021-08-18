@@ -1,12 +1,13 @@
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Router, RouterEvent } from '@angular/router';
-import { AuthService } from './services/auth.service';
-import { User } from './models/user.model';
-import { Observable, Subscription } from 'rxjs';
+import { Platform } from '@ionic/angular'
+import { SplashScreen } from '@ionic-native/splash-screen/ngx'
+import { StatusBar } from '@ionic-native/status-bar/ngx'
+import { Router, RouterEvent } from '@angular/router'
+import { Subscription } from 'rxjs'
+
+import { AuthService } from './services/auth.service'
+import { User } from './models/user.model'
 
 @Component({
   selector: 'app-root',

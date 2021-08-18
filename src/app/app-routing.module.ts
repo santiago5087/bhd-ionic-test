@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
 
 import { AuthGuardService } from './services/auth-guard.service'
 
@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'tabs/mis-productos/product-detail/:type/:number',
     loadChildren: () => import('./pages/product-detail/product-detail.module').then( m => m.ProductDetailPageModule),
     canLoad: [AuthGuardService]
+  },
+  {
+    path: 'slides',
+    loadChildren: () => import('./pages/slides/slides.module').then( m => m.SlidesPageModule)
   }
 ];
 
